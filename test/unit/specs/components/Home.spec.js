@@ -10,14 +10,7 @@ describe('Home', () => {
   let wrapper
   let actions
   let store
-
-  const state = {
-    todos: [
-      {id: 1, title: 'Do Sth', completed: false},
-      {id: 2, title: 'Do Sth Else', completed: true}
-    ],
-    errors: []
-  }
+  let state
 
   beforeEach(() => {
     actions = {
@@ -27,14 +20,27 @@ describe('Home', () => {
       state,
       actions,
     })
+    state = {
+      todos: [
+        {id: 1, title: 'Test', completed: true},
+        {id: 2, title: 'Tram Le', completed: true}
+      ],
+      errors: []
+    }
     wrapper = shallowMount(Home, {localVue, store})
+  })
+
+  it('should dispatches "getTodo" when created', () => {
+    expect(actions.getTodo).toHaveBeenCalled()
+  })
+
+  it('call mapState from store', () => {
+    expect(wrapper.vm.todos).toEqual(state.todos)
   })
 
   it('should render list todo', () => {
     expect(wrapper.vm.todos.length).toEqual(state.todos.length)
   })
 
-  it('should call action getTodo', () => {
-    expect(actions.getTodo).toHaveBeenCalled();
-  })
+
 })

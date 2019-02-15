@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import TodoItem from './TodoItem.vue';
 import axios from 'axios';
 

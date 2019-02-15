@@ -26,7 +26,9 @@ export default {
       }
       // Send up to parent
       this.$emit('add-todo', newTodo);
-
+      // this.$emit('add-todo', newTodo, 1, 2); //emit lan 1
+      // this.$emit('add-todo', newTodo, 1, 2); //emit lan 2
+      //                      params1, params2, params3
       this.title = '';
     }
   }

@@ -1,10 +1,11 @@
 import axios from 'axios';
+import TodoService from '@/services/todo_service'
 
 export default {
-  getTodo({ commit }, todo) {
-    axios.get('http://localhost:3000/api/tasks')
-    .then(res => commit('SET_TODO', res.data))
-    .catch(err => console.log(err));
+  getTodo({ commit }) {
+    TodoService.getTodo().then(
+      todos => commit('SET_TODO', todos)
+    )
   },
   addTodo({ commit }, newTodo) {
     axios.post('http://localhost:3000/api/tasks', newTodo)
